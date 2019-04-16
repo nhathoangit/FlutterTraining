@@ -12,98 +12,104 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        resizeToAvoidBottomPadding: false,
-        body: Container(
-          constraints: BoxConstraints.expand(),
-          padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
-          color: Colors.white,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
-                child: Container(
-                  child: FlutterLogo(),
-                  width: 70,
-                  height: 70,
-                  padding: EdgeInsets.all(15),
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: Colors.black38),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 60),
-                child: Text(
-                  "Hello, \nWelcome back",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                child: TextField(
-                  style: TextStyle(fontSize: 18, color: Colors.black),
-                  decoration: InputDecoration(
-                      labelText: "User Name",
-                      labelStyle:
-                          TextStyle(color: Colors.black26, fontSize: 15)),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
-                child: Stack(
-                  alignment: AlignmentDirectional.centerEnd,
-                  children: <Widget>[
-                    TextField(
+        resizeToAvoidBottomPadding: true,
+        body: SafeArea(
+          top: true,
+          child: Container(
+            constraints: BoxConstraints.expand(),
+            padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+            color: Colors.white,
+            child: SingleChildScrollView(
+              //reverse: true,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
+                    child: Container(
+                      child: FlutterLogo(),
+                      width: 70,
+                      height: 70,
+                      padding: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: Colors.black38),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 60),
+                    child: Text(
+                      "Hello, \nWelcome back",
+                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                    child: TextField(
                       style: TextStyle(fontSize: 18, color: Colors.black),
-                      obscureText: true,
                       decoration: InputDecoration(
-                          labelText: "Password",
+                          labelText: "User Name",
                           labelStyle:
                               TextStyle(color: Colors.black26, fontSize: 15)),
                     ),
-                    Text(
-                      "Show",
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                height: 40,
-                child: RaisedButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8))),
-                  onPressed: _onSignInClick,
-                  color: Colors.blue,
-                  child: Text(
-                    "SIGN IN",
-                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
+                    child: Stack(
+                      alignment: AlignmentDirectional.centerEnd,
+                      children: <Widget>[
+                        TextField(
+                          style: TextStyle(fontSize: 18, color: Colors.black),
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              labelText: "Password",
+                              labelStyle:
+                                  TextStyle(color: Colors.black26, fontSize: 15)),
+                        ),
+                        Text(
+                          "Show",
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 40,
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8))),
+                      onPressed: _onSignInClick,
+                      color: Colors.blue,
+                      child: Text(
+                        "SIGN IN",
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 20, 0, 30),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          "NEW USER SIGN UP",
+                          style: TextStyle(fontSize: 15, color: Colors.grey),
+                        ),
+                        Text(
+                          "FORGOT PASSWORD",
+                          style: TextStyle(fontSize: 15, color: Colors.blue),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 30),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      "NEW USER SIGN UP",
-                      style: TextStyle(fontSize: 15, color: Colors.grey),
-                    ),
-                    Text(
-                      "FORGOT PASSWORD",
-                      style: TextStyle(fontSize: 15, color: Colors.blue),
-                    ),
-                  ],
-                ),
-              )
-            ],
+            ),
           ),
         ),
       ),
