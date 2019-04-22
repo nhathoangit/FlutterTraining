@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'dialog_message.dart';
+
 void main() => runApp(LoginForm());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LoginForm(),
+    );
+  }
+}
 
 class LoginForm extends StatefulWidget {
   @override
@@ -8,6 +20,8 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  bool _showPass = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +34,6 @@ class _LoginFormState extends State<LoginForm> {
             padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
             color: Colors.white,
             child: SingleChildScrollView(
-              //reverse: true,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,18 +73,21 @@ class _LoginFormState extends State<LoginForm> {
                       children: <Widget>[
                         TextField(
                           style: TextStyle(fontSize: 18, color: Colors.black),
-                          obscureText: true,
+                          obscureText: !_showPass,
                           decoration: InputDecoration(
                               labelText: "Password",
                               labelStyle:
                                   TextStyle(color: Colors.black26, fontSize: 15)),
                         ),
-                        Text(
-                          "Show",
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
+                        GestureDetector(
+                          onTap: _showPassword,
+                          child: Text(
+                            "Show",
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold),
+                          ),
                         )
                       ],
                     ),
@@ -82,7 +98,9 @@ class _LoginFormState extends State<LoginForm> {
                     child: RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8))),
-                      onPressed: _onSignInClick,
+                      onPressed: () {
+                        _onSignInClick(context);
+                      },
                       color: Colors.blue,
                       child: Text(
                         "SIGN IN",
@@ -116,5 +134,14 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
-  void _onSignInClick() {}
+  void _showPassword() {
+    setState(() {
+      _showPass = !_showPass;
+    });
+  }
+
+  void _onSignInClick(BuildContext context) {
+    MessageDialog dialog = new MessageDialog();
+    dialog.information(context, "AAA", "bbbb");
+  }
 }
