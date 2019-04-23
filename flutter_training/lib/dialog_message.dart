@@ -1,28 +1,20 @@
 import 'package:flutter/material.dart';
 
-class MessageDialog{
-  information(BuildContext context, String title, String message){
+import 'custom_dialog.dart';
+import 'onclick_listener.dart';
+
+class MessageDialog {
+  information(BuildContext context, String title, String message,
+      ConfirmListener listener) {
     return showDialog(
-        context: context,
-      barrierDismissible: true,
-      builder: (BuildContext context){
-          return AlertDialog(
-            title: Text(title),
-            content: SingleChildScrollView(
-              child: ListBody(
-                children: <Widget>[
-                  Text(message)
-                ],
-              ),
-            ),
-            actions: <Widget>[
-              FlatButton(
-                  onPressed:() => Navigator.pop(context),
-                  child: Text("OK")
-              )
-            ],
-          );
-      }
+      context: context,
+      builder: (BuildContext context) => CustomDialog(
+            title: "Success",
+            message:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            buttonText: "Okay",
+            listener: listener,
+          ),
     );
   }
 }
